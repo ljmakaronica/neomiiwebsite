@@ -1,0 +1,143 @@
+:root {
+  --pink: #dbbec0;
+  --blue: #a2b8cf;
+  --ink: #000;
+  --display: Lovelace, Didot, 'Times New Roman', serif;
+  --body: 'Tenor Sans', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--pink); color: var(--ink); }
+h1, h2, p, figure { margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 400; }
+p { font-family: var(--body); }
+a { color: inherit; }
+img, video { display: block; }
+img { max-width: none; }
+a:focus-visible, video:focus-visible, iframe:focus-visible {
+  outline: 3px solid #872e45;
+  outline-offset: 6px;
+}
+.section { position: relative; overflow: hidden; background: var(--pink); }
+.blue { background: var(--blue); }
+.stage {
+  position: relative;
+  width: min(100%, 1366px);
+  aspect-ratio: 1366 / 768;
+  margin-inline: auto;
+  container-type: inline-size;
+}
+/* Positions come from the original 1366 × 768 Canva design. */
+.placed {
+  position: absolute;
+  left: calc(var(--x) / 1366 * 100%);
+  top: calc(var(--y) / 768 * 100%);
+  width: calc(var(--w) / 1366 * 100%);
+  height: calc(var(--h) / 768 * 100%);
+}
+.art { overflow: hidden; pointer-events: none; user-select: none; }
+.art > img { position: absolute; width: 100%; height: 100%; }
+.art.flip > img { transform: scaleX(-1); }
+.text {
+  height: auto;
+  font-size: calc(var(--font) / 1366 * 100cqw);
+  line-height: calc(var(--line) / 1366 * 100cqw);
+  font-kerning: none;
+  font-feature-settings: "liga" off, "clig" off, "calt" off;
+  -webkit-font-smoothing: antialiased;
+}
+.display { letter-spacing: -.025em; }
+.hero-title { text-align: center; color: var(--pink); }
+.hero-subtitle { text-align: center; color: var(--pink); letter-spacing: .045em; text-transform: uppercase; }
+.about-title, .about-copy { z-index: 2; }
+.about-copy p + p { margin-top: calc(31.8255 / 1366 * 100cqw); }
+.portrait { overflow: hidden; clip-path: polygon(15.617% .121%, 99.872% 8.998%, 84.383% 99.899%, .128% 91.023%); }
+.portrait img { position: absolute; width: 225.798%; height: 132.986%; left: -60.115%; top: -14.809%; }
+.resume-title { text-align: center; }
+.resume-link { z-index: 2; }
+.resume-link img { width: 100%; height: 100%; object-fit: cover; }
+.hover-label {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap; padding: 10px 15px; background: #fff8ed; border: 1px solid #9c1d31;
+  font: 13px var(--body); opacity: 0; transition: opacity .2s;
+}
+.resume-link:hover .hover-label, .resume-link:focus-visible .hover-label { opacity: 1; }
+.work-heading { font-family: var(--body); text-transform: uppercase; }
+.work-note { text-align: center; font-kerning: normal; }
+.work-note p + p { margin-top: calc(24.3836 / 1366 * 100cqw); }
+.reel { object-fit: cover; background: #080907; }
+.work-video { object-position: 60% center; }
+.rose-frame { z-index: 2; }
+.experience-note p + p { margin-top: calc(23.7253 / 1366 * 100cqw); }
+.paper-lotus { opacity: .61; }
+.paper-title { z-index: 2; }
+.paper-document { z-index: 2; background: #f8f9fa; }
+.paper-document iframe { display: block; width: 100%; height: 100%; border: 0; background: white; }
+.paper-document > a {
+  display: block; position: absolute; top: 100%; width: 100%; padding: 9px 5px;
+  text-align: center; text-decoration: none; background: #faf4e9; font: 12px var(--body);
+}
+.paper-document > a:hover { text-decoration: underline; }
+.contact-title { text-align: center; text-transform: uppercase; letter-spacing: .045em; font-kerning: normal; }
+.contact-link { transition: transform .2s; }
+.contact-link:hover { transform: translateY(-4px); }
+.contact-link img { width: 100%; height: 100%; object-fit: contain; }
+.skip-link {
+  position: fixed; top: -100px; left: 15px; z-index: 20; padding: 14px 20px;
+  background: #fff8ed; color: #52172c; font: 16px var(--body);
+}
+.skip-link:focus { top: 15px; }
+
+/* Original artwork, with readable text and usable controls on phones. */
+@media (max-width: 650px) {
+  .stage { width: 100%; aspect-ratio: auto; }
+  .desktop-break { display: none; }
+  .hero-stage { height: 115vw; min-height: 400px; }
+  .hero-art { left: 5%; top: 8%; width: 90%; height: 84%; }
+  .hero-title { left: 8%; top: 30%; width: 84%; font-size: 18cqw; line-height: .9; }
+  .hero-subtitle { left: 30%; top: 67%; width: 40%; font-size: 3.1cqw; line-height: 1.1; }
+  .about-stage { padding: 38px 24px 45px; display: flex; flex-direction: column; }
+  .about-title { position: relative; inset: auto; width: 100%; font-size: 15cqw; line-height: 1.1; margin-bottom: 24px; z-index: 2; }
+  .about-copy { position: relative; inset: auto; width: 100%; font-size: 16px; line-height: 1.55; z-index: 2; }
+  .about-copy p + p { margin-top: 20px; }
+  .portrait { position: relative; inset: auto; width: 78%; height: auto; aspect-ratio: 483 / 614; margin: 30px 0 0 auto; }
+  .about-lotus { left: 71%; top: 0; width: 29%; height: 80px; }
+  .about-blossom { left: 1%; top: auto; bottom: 0; width: 58%; height: 150px; }
+  .resume-stage { height: 138vw; min-height: 460px; }
+  .resume-title { left: 10%; top: 4%; width: 80%; font-size: 10cqw; line-height: 1.2; }
+  .resume-lace { left: 13%; top: 17%; width: 74%; height: 76%; }
+  .resume-link { left: 23.08%; top: 25.34%; width: 56.3%; height: 59.32%; }
+  .cupid-left { left: -5%; top: 46%; width: 24%; height: 25%; }
+  .cupid-right { left: 81%; top: 44%; width: 24%; height: 25%; }
+  .work-stage { padding: 30px 20px 40px; display: flex; flex-direction: column; }
+  .work-heading { position: relative; inset: auto; width: 100%; font-size: 25px; line-height: 1.05; text-align: right; margin-bottom: 28px; }
+  .work-art { left: -14%; top: 18px; width: 95%; height: 650px; }
+  .work-note { position: relative; inset: auto; width: 73%; margin-left: auto; padding: 25px 18px; background: #eee2bd; font-size: 15px; line-height: 1.5; text-align: left; }
+  .work-note p + p { margin-top: 20px; }
+  .work-media { position: relative; width: min(100%, 360px); aspect-ratio: 516.534 / 733.973; margin: 35px auto 0; }
+  .work-video { left: 17.597%; top: 8.146%; width: 64.806%; height: 83.709%; }
+  .rose-frame { inset: 0; width: 100%; height: 100%; }
+  .content-stage { padding: 40px 20px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; row-gap: 35px; }
+  .content-video { position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: 9 / 16; }
+  .flower-divider { left: calc(50% - 10px); top: 40px; width: 20px; height: 290px; }
+  .lilies-art { left: 25%; top: auto; bottom: 0; width: 90%; height: 720px; }
+  .experience-note { position: relative; inset: auto; grid-column: 1 / -1; width: 85%; padding: 24px; margin-top: 100px; background: #eaeae3; font-size: 15px; line-height: 1.5; }
+  .experience-note p + p { margin-top: 22px; }
+  .paper-stage { height: 160vw; min-height: 600px; }
+  .paper-title { left: 6%; top: 5%; width: 76%; font-size: 10cqw; line-height: .9; }
+  .paper-lotus { left: 0; top: 8%; width: 55%; height: 180px; }
+  .paper-circle { left: -10%; top: 35%; width: 120%; height: auto; aspect-ratio: 1; }
+  .paper-document { left: 18%; top: 39%; width: 64%; height: 48%; }
+  .paper-document > a { font-size: 11px; }
+  .contact-stage { height: 95vw; min-height: 340px; }
+  .contact-art { left: 4%; top: 9%; width: 92%; height: 82%; }
+  .contact-title { left: 8%; top: 36%; width: 84%; font-size: 8.5cqw; line-height: 1.1; }
+  .linkedin { left: 32%; top: 53%; width: 10%; height: 10%; }
+  .email { left: 58%; top: 53%; width: 12%; height: 10%; }
+  .contact-flower { left: 75%; top: 0; width: 25%; height: 30%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+.art > svg { display: block; width: 100%; height: 100%; }

@@ -1,0 +1,10 @@
+{
+  "reference": "https://neomiii.my.canva.site/",
+  "local_asset_references": "passed",
+  "fonts": "original WOFF integrity passed; desktop visually verified",
+  "desktop": "hero, introduction, work, content, contact inspected",
+  "mobile": "accessibility checked at 390px; screenshots unavailable",
+  "playback": "unverified; native decoding unavailable",
+  "deployed": false,
+  "javascript": "passed syntax and simulated visibility, pause, resume, trim, and reduced-motion checks"
+}
